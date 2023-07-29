@@ -15,6 +15,8 @@ services:
       - ${ROOT_DIR}/data/media:/data
     ports:
       - "8096:8096"
+      - "7359:7359/udp"
+      - "1900:1900/udp"
     devices:
       - /dev/dri:/dev/dri
     restart: unless-stopped
