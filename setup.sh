@@ -13,14 +13,15 @@ sudo usermod -a -G mediacenter prowlarr
 sudo usermod -a -G mediacenter qbittorrent
 
 # Make directories
-sudo mkdir -pv ${ROOT_DIR}/config/{sonarr,radarr,prowlarr,qbittorrent,jellyfin}-config
+sudo mkdir -pv ./config/{sonarr,radarr,prowlarr,qbittorrent,jellyfin}-config
 sudo mkdir -pv ${ROOT_DIR}/data/{torrents,media}/{tv,movies}
 
 # Set permissions
 sudo chmod -R 775 ${ROOT_DIR}/data
 sudo chown -R ${UID}:mediacenter ${ROOT_DIR}/data
-sudo chown -R sonarr:mediacenter ${ROOT_DIR}/config/sonarr-config
-sudo chown -R radarr:mediacenter ${ROOT_DIR}/config/radarr-config
-sudo chown -R prowlarr:mediacenter ${ROOT_DIR}/config/prowlarr-config
-sudo chown -R qbittorrent:mediacenter ${ROOT_DIR}/config/qbittorrent-config
-sudo chown -R ${UID}:mediacenter ${ROOT_DIR}/config/jellyfin-config
+sudo chown -R ${UID}:mediacenter ./config
+sudo chown -R sonarr:mediacenter ./config/sonarr-config
+sudo chown -R radarr:mediacenter ./config/radarr-config
+sudo chown -R prowlarr:mediacenter ./config/prowlarr-config
+sudo chown -R qbittorrent:mediacenter ./config/qbittorrent-config
+sudo chown -R ${UID}:mediacenter ./config/jellyfin-config

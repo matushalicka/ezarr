@@ -11,7 +11,7 @@ services:
       - TZ=${TIMEZONE}
       - JELLYFIN_PublishedServerUrl=${JELLYFINURL}
     volumes:
-      - ${ROOT_DIR}/config/jellyfin-config:/config
+      - ./config/jellyfin-config:/config
       - ${ROOT_DIR}/data/media:/data
     ports:
       - "8096:8096"
@@ -28,7 +28,7 @@ services:
       - UMASK=002
       - TZ=${TIMEZONE}
     volumes:
-      - ${ROOT_DIR}/config/sonarr-config:/config
+      - ./config/sonarr-config:/config
       - ${ROOT_DIR}/data:/data
     ports:
       - "8989:8989"
@@ -43,7 +43,7 @@ services:
       - UMASK=002
       - TZ=${TIMEZONE}
     volumes:
-      - ${ROOT_DIR}/config/radarr-config:/config
+      - ./config/radarr-config:/config
       - ${ROOT_DIR}/data:/data
     ports:
       - "7878:7878"
@@ -58,7 +58,7 @@ services:
       - UMASK=002
       - TZ=${TIMEZONE}
     volumes:
-      - ${ROOT_DIR}/config/prowlarr-config:/config
+      - ./config/prowlarr-config:/config
     ports:
       - "9696:9696"
     restart: unless-stopped
@@ -73,7 +73,7 @@ services:
       - TZ=${TIMEZONE}
       - WEBUI_PORT=8080
     volumes:
-      - ${ROOT_DIR}/config/qbittorrent-config:/config
+      - ./config/qbittorrent-config:/config
       - ${ROOT_DIR}/data/torrents:/data/torrents
     ports:
       - "8080:8080"
