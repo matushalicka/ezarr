@@ -94,3 +94,19 @@ services:
     ports:
       - "8191:8191"
     restart: unless-stopped
+
+  bazarr:
+    image: lscr.io/linuxserver/bazarr:latest
+    container_name: bazarr
+    environment:
+      - PUID=13008
+      - PGID=13000
+      - UMASK=002
+      - TZ=${TIMEZONE}
+    volumes:
+      - ./config/bazarr-config:/config
+      - ${ROOT_DIR}/data:/data
+    ports:
+      - "6767:6767"
+    restart: unless-stopped
+
