@@ -110,3 +110,14 @@ services:
       - "6767:6767"
     restart: unless-stopped
 
+  openai-whisper-asr-webservice:
+    image: onerahmet/openai-whisper-asr-webservice:latest
+    container_name: openai-whisper-asr-webservice
+    environment:
+      - ASR_ENGINE=faster_whisper
+      - ASR_MODEL=large
+    ports:
+      - "9000:9000"
+    restart: unless-stopped
+
+

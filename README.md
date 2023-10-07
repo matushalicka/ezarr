@@ -16,6 +16,7 @@ Ezarr is a project built to make it EZ to deploy a Servarr mediacenter. It featu
 - [Jellyfin](https://jellyfin.org/) is a Free Software Media System that puts you in control of managing and streaming your media. It is an alternative to the proprietary Emby and Plex, to provide media from a dedicated server to end-user devices via multiple apps.
 - [FlareSolverr](https://github.com/FlareSolverr/FlareSolverrFlareSolverr) is a proxy server to bypass Cloudflare and DDoS-GUARD protection.
 - [Bazarr](https://www.bazarr.media/) is a companion application to Sonarr and Radarr that manages and downloads subtitles based on your requirements.
+- [Whisper ASR Webservice](https://github.com/ahmetoner/whisper-asr-webservice/) is a general-purpose speech recognition model. It is trained on a large dataset of diverse audio and is also a multitask model that can perform multilingual speech recognition as well as speech translation and language identification.
 
 ## Using
 1. To get started, clone the repository in a directory of your choosing. **Note: this will be where
