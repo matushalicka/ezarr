@@ -10,6 +10,7 @@ services:
       - UMASK=002
       - TZ=${TIMEZONE}
       - JELLYFIN_PublishedServerUrl=${JELLYFINURL}
+      - DOCKER_MODS=linuxserver/mods:jellyfin-opencl-intel
     volumes:
       - ./config/jellyfin-config:/config
       - ${ROOT_DIR}/data/media:/data
