@@ -21,22 +21,22 @@ services:
       - /dev/dri:/dev/dri
     restart: unless-stopped
 
-  plex:
-    image: lscr.io/linuxserver/plex:latest
-    container_name: plex
-    network_mode: host
-    environment:
-      - PUID=${UID}
-      - PGID=13000
-      - UMASK=002
-      - TZ=${TIMEZONE}
-      - VERSION=docker
-    volumes:
-      - ./config/plex-config:/config
-      - ${ROOT_DIR}/data/media:/data
-    devices:
-      - /dev/dri:/dev/dri
-    restart: unless-stopped
+#  plex:
+#    image: lscr.io/linuxserver/plex:latest
+#    container_name: plex
+#    network_mode: host
+#    environment:
+#      - PUID=${UID}
+#      - PGID=13000
+#      - UMASK=002
+#      - TZ=${TIMEZONE}
+#      - VERSION=docker
+#    volumes:
+#      - ./config/plex-config:/config
+#      - ${ROOT_DIR}/data/media:/data
+#    devices:
+#      - /dev/dri:/dev/dri
+#    restart: unless-stopped
 
   sonarr:
     image: lscr.io/linuxserver/sonarr:latest
