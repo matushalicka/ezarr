@@ -15,7 +15,7 @@ sudo usermod -a -G mediacenter qbittorrent
 sudo usermod -a -G mediacenter bazarr
 
 # Make directories
-sudo mkdir -pv ./config/{sonarr,radarr,prowlarr,qbittorrent,jellyfin,bazarr}-config
+sudo mkdir -pv ./config/{sonarr,radarr,prowlarr,qbittorrent,jellyfin,plex,bazarr}-config
 sudo mkdir -pv ${ROOT_DIR}/data/{torrents,media}/{tv,movies}
 
 # Set permissions
@@ -27,4 +27,5 @@ sudo chown -R radarr:mediacenter ./config/radarr-config
 sudo chown -R prowlarr:mediacenter ./config/prowlarr-config
 sudo chown -R qbittorrent:mediacenter ./config/qbittorrent-config
 sudo chown -R ${UID}:mediacenter ./config/jellyfin-config
+sudo chown -R ${UID}:mediacenter ./config/plex-config
 sudo chown -R bazarr:mediacenter ./config/bazarr-config

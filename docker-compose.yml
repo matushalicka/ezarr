@@ -1,5 +1,3 @@
----
-version: "3.1"
 services:
   jellyfin:
     image: lscr.io/linuxserver/jellyfin:latest
@@ -15,9 +13,27 @@ services:
       - ./config/jellyfin-config:/config
       - ${ROOT_DIR}/data/media:/data
     ports:
-      - "8096:8096"
-      - "7359:7359/udp"
-      - "1900:1900/udp"
+      - 8096:8096
+      - 8920:8920
+      - 7359:7359/udp
+      - 1900:1900/udp
+    devices:
+      - /dev/dri:/dev/dri
+    restart: unless-stopped
+
+  plex:
+    image: lscr.io/linuxserver/plex:latest
+    container_name: plex
+    network_mode: host
+    environment:
+      - PUID=${UID}
+      - PGID=13000
+      - UMASK=002
+      - TZ=${TIMEZONE}
+      - VERSION=docker
+    volumes:
+      - ./config/plex-config:/config
+      - ${ROOT_DIR}/data/media:/data
     devices:
       - /dev/dri:/dev/dri
     restart: unless-stopped
@@ -34,7 +50,7 @@ services:
       - ./config/sonarr-config:/config
       - ${ROOT_DIR}/data:/data
     ports:
-      - "8989:8989"
+      - 8989:8989
     restart: unless-stopped
 
   radarr:
@@ -49,7 +65,7 @@ services:
       - ./config/radarr-config:/config
       - ${ROOT_DIR}/data:/data
     ports:
-      - "7878:7878"
+      - 7878:7878
     restart: unless-stopped
 
   prowlarr:
@@ -63,7 +79,7 @@ services:
     volumes:
       - ./config/prowlarr-config:/config
     ports:
-      - "9696:9696"
+      - 9696:9696
     restart: unless-stopped
 
   qbittorrent:
@@ -75,13 +91,14 @@ services:
       - UMASK=002
       - TZ=${TIMEZONE}
       - WEBUI_PORT=8080
+      - TORRENTING_PORT=6881
     volumes:
       - ./config/qbittorrent-config:/config
       - ${ROOT_DIR}/data/torrents:/data/torrents
     ports:
-      - "8080:8080"
-      - "6881:6881"
-      - "6881:6881/udp"
+      - 8080:8080
+      - 6881:6881
+      - 6881:6881/udp
     restart: unless-stopped
 
   flaresolverr:
@@ -93,7 +110,7 @@ services:
       - CAPTCHA_SOLVER=${CAPTCHA_SOLVER:-none}
       - TZ=${TIMEZONE}
     ports:
-      - "8191:8191"
+      - 8191:8191
     restart: unless-stopped
 
   bazarr:
@@ -108,7 +125,7 @@ services:
       - ./config/bazarr-config:/config
       - ${ROOT_DIR}/data:/data
     ports:
-      - "6767:6767"
+      - 6767:6767
     restart: unless-stopped
 
   openai-whisper-asr-webservice:
@@ -116,9 +133,9 @@ services:
     container_name: openai-whisper-asr-webservice
     environment:
       - ASR_ENGINE=faster_whisper
-      - ASR_MODEL=large
+      - ASR_MODEL=base
     ports:
-      - "9000:9000"
+      - 9000:9000
     restart: unless-stopped
 
 
