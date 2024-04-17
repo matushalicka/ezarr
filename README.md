@@ -6,17 +6,19 @@ Ezarr is a project built to make it EZ to deploy a Servarr mediacenter. It featu
   download this if connected to Prowlarr and qBittorrent. It can also reorganize the media you
   already own in order to create a more uniformly formatted collection.
 - [Radarr](https://radarr.video/) is like Sonarr, but for movies.
-- [Prowlarr](https://github.com/Prowlarr/Prowlarr) can keep track of indexers, which are services that
+- [Bazarr](https://www.bazarr.media/) is a companion application to Sonarr and Radarr that manages and downloads subtitles based on your requirements.
+- [Prowlarr](https://prowlarr.com/) can keep track of indexers, which are services that
   keep track of Torrent or UseNet links. One can search an indexer for certain content and find a
   where to download this. **Note**: when adding an indexer, please do not set the "seed ratio" to
   less than 1. Less than 1 means that you upload less than you download. Not only is this
   unfriendly towards your fellow users, but it can also get you banned from certain indexers.
 - [qBittorrent](https://www.qbittorrent.org/) can download torrents and provides a bunch more
   features for management.
+- [SABnzbd](https://sabnzbd.org/) can download nzb's features for management.
 - [Jellyfin](https://jellyfin.org/) is a Free Software Media System that puts you in control of managing and streaming your media. It is an alternative to the proprietary Emby and Plex, to provide media from a dedicated server to end-user devices via multiple apps.
-- [FlareSolverr](https://github.com/FlareSolverr/FlareSolverrFlareSolverr) is a proxy server to bypass Cloudflare and DDoS-GUARD protection.
-- [Bazarr](https://www.bazarr.media/) is a companion application to Sonarr and Radarr that manages and downloads subtitles based on your requirements.
+- [FlareSolverr](https://github.com/FlareSolverr/FlareSolverr) is a proxy server to bypass Cloudflare and DDoS-GUARD protection.
 - [Whisper ASR Webservice](https://github.com/ahmetoner/whisper-asr-webservice/) is a general-purpose speech recognition model. It is trained on a large dataset of diverse audio and is also a multitask model that can perform multilingual speech recognition as well as speech translation and language identification.
+- [Recyclarr](https://recyclarr.dev/) is a command-line application that will automatically synchronize recommended settings from the TRaSH guides to your Sonarr/Radarr instances.
 
 ## Using
 1. To get started, clone the repository in a directory of your choosing. **Note: this will be where
@@ -46,7 +48,26 @@ take a look at [important notes](#important-notes) before you continue.
 - You'll have to add indexers in Prowlarr by hand. Use Prowlarrs settings to connect it to the
   other -arr apps.
 
+### SABnzbd External internet access denied message
+When you're trying to access SABnzbd the first time you'll come across the message `External
+internet access denied`. To fix this simple modify the `sabnzbd.ini` and change `inet_exposure` to
+`4`, restart the docker container for sabnzbd (`docker restart sabnzbd`) and now you can access the
+UI of SABnzbd (note: you may get a `Access denied - Hostname verification failed`, to fix this,
+simply go to the IP of your server directly instead of the hostname). After accessing the UI don't
+forget to set a username and password (https://sabnzbd.org/wiki/configuration/3.7/general,
+section Security).
+
+For more instructions or help see also https://sabnzbd.org/wiki/extra/access-denied.html on the
+official SABnzbd website.
+
 ## FAQ
+
+### How to update containers
+If you'd like to update containers, you can move to the directory of your `docker-compose.yml` file
+and run `(sudo) docker compose pull`. This pulls the newest versions of all images (blueprints for
+containers) listed in the `docker-compose.yml` file. Then, you can run `(sudo) docker compose up
+-d`. This will deploy the new versions without losing uptime. Afterwards, you can run `(sudo)
+docker image prune` to remove the old images, freeing up space.
 
 ### Why do I need to set some settings myself, can that be added?
 Some settings, particularly for the Servarr suite, are set in databases. While it *might* be
