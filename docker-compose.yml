@@ -1,26 +1,4 @@
 services:
-  jellyfin:
-    image: lscr.io/linuxserver/jellyfin:latest
-    container_name: jellyfin
-    environment:
-      - PUID=${UID}
-      - PGID=13000
-      - UMASK=002
-      - TZ=${TIMEZONE}
-      - JELLYFIN_PublishedServerUrl=${JELLYFINURL}
-      - DOCKER_MODS=linuxserver/mods:jellyfin-opencl-intel
-    volumes:
-      - ./config/jellyfin-config:/config
-      - ${ROOT_DIR}/data/media:/data
-    ports:
-      - 8096:8096
-      - 8920:8920
-      - 7359:7359/udp
-      - 1900:1900/udp
-    devices:
-      - /dev/dri:/dev/dri
-    restart: unless-stopped
-
   sonarr:
     image: lscr.io/linuxserver/sonarr:latest
     container_name: sonarr
@@ -51,6 +29,21 @@ services:
       - 7878:7878
     restart: unless-stopped
 
+  bazarr:
+    image: lscr.io/linuxserver/bazarr:latest
+    container_name: bazarr
+    environment:
+      - PUID=13008
+      - PGID=13000
+      - UMASK=002
+      - TZ=${TIMEZONE}
+    volumes:
+      - ./config/bazarr-config:/config
+      - ${ROOT_DIR}/data:/data
+    ports:
+      - 6767:6767
+    restart: unless-stopped
+
   prowlarr:
     image: lscr.io/linuxserver/prowlarr:latest
     container_name: prowlarr
@@ -63,6 +56,28 @@ services:
       - ./config/prowlarr-config:/config
     ports:
       - 9696:9696
+    restart: unless-stopped
+
+  jellyfin:
+    image: lscr.io/linuxserver/jellyfin:latest
+    container_name: jellyfin
+    environment:
+      - PUID=${MUID}
+      - PGID=13000
+      - UMASK=002
+      - TZ=${TIMEZONE}
+      - JELLYFIN_PublishedServerUrl=${JELLYFINURL}
+      - DOCKER_MODS=linuxserver/mods:jellyfin-opencl-intel
+    volumes:
+      - ./config/jellyfin-config:/config
+      - ${ROOT_DIR}/data/media:/data
+    ports:
+      - 8096:8096
+      - 8920:8920
+      - 7359:7359/udp
+      - 1900:1900/udp
+    devices:
+      - /dev/dri:/dev/dri
     restart: unless-stopped
 
   qbittorrent:
@@ -84,6 +99,21 @@ services:
       - 6881:6881/udp
     restart: unless-stopped
 
+  sabnzbd:
+    image: lscr.io/linuxserver/sabnzbd:latest
+    container_name: sabnzbd
+    environment:
+      - PUID=13011
+      - PGID=13000
+      - UMASK=002
+      - TZ=${TIMEZONE}
+    volumes:
+      - ./config/sabnzbd-config:/config
+      - ${ROOT_DIR}/data/usenet:/data/usenet
+    ports:
+      - "8081:8080"
+    restart: unless-stopped
+
   flaresolverr:
     image: ghcr.io/flaresolverr/flaresolverr:latest
     container_name: flaresolverr
@@ -94,21 +124,6 @@ services:
       - TZ=${TIMEZONE}
     ports:
       - 8191:8191
-    restart: unless-stopped
-
-  bazarr:
-    image: lscr.io/linuxserver/bazarr:latest
-    container_name: bazarr
-    environment:
-      - PUID=13008
-      - PGID=13000
-      - UMASK=002
-      - TZ=${TIMEZONE}
-    volumes:
-      - ./config/bazarr-config:/config
-      - ${ROOT_DIR}/data:/data
-    ports:
-      - 6767:6767
     restart: unless-stopped
 
   openai-whisper-asr-webservice:
