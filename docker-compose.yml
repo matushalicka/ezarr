@@ -155,6 +155,7 @@ services:
     environment:
       - PUID=${M_UID}
       - PGID=13000
+      - UMASK=002
       - TZ=${TIMEZONE}
     volumes:
       - ./config/emulatorjs-config:/config
@@ -171,6 +172,7 @@ services:
     environment:
       - PUID=${M_UID}
       - PGID=13000
+      - UMASK=002
       - TZ=${TIMEZONE}
     volumes:
       - ./config/ombi-config:/config
