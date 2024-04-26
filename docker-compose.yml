@@ -9,7 +9,7 @@ services:
       - TZ=${TIMEZONE}
     volumes:
       - ./config/sonarr-config:/config
-      - ${ROOT_DIR}/data:/data
+      - ${ROOT_DIR_2}/data/tv:/data/tv
     ports:
       - 8989:8989
     restart: unless-stopped
@@ -24,7 +24,7 @@ services:
       - TZ=${TIMEZONE}
     volumes:
       - ./config/radarr-config:/config
-      - ${ROOT_DIR}/data:/data
+      - ${ROOT_DIR}/data/movies:/data/movies
     ports:
       - 7878:7878
     restart: unless-stopped
@@ -33,13 +33,14 @@ services:
     image: lscr.io/linuxserver/bazarr:latest
     container_name: bazarr
     environment:
-      - PUID=13008
+      - PUID=13013
       - PGID=13000
       - UMASK=002
       - TZ=${TIMEZONE}
     volumes:
       - ./config/bazarr-config:/config
-      - ${ROOT_DIR}/data:/data
+      - ${ROOT_DIR}/data/movies/media:/data/movies/media
+      - ${ROOT_DIR_2}/data/tv/media:/data/tv/media
     ports:
       - 6767:6767
     restart: unless-stopped
@@ -62,15 +63,16 @@ services:
     image: lscr.io/linuxserver/jellyfin:latest
     container_name: jellyfin
     environment:
-      - PUID=${MUID}
+      - PUID=${M_UID}
       - PGID=13000
       - UMASK=002
       - TZ=${TIMEZONE}
-      - JELLYFIN_PublishedServerUrl=${JELLYFINURL}
+      - JELLYFIN_PublishedServerUrl=${JELLYFIN_URL}
       - DOCKER_MODS=linuxserver/mods:jellyfin-opencl-intel
     volumes:
       - ./config/jellyfin-config:/config
-      - ${ROOT_DIR}/data/media:/data
+      - ${ROOT_DIR}/data/movies/media:/data/movies/media
+      - ${ROOT_DIR_2}/data/tv/media:/data/tv/media
     ports:
       - 8096:8096
       - 8920:8920
@@ -92,7 +94,8 @@ services:
       - TORRENTING_PORT=6881
     volumes:
       - ./config/qbittorrent-config:/config
-      - ${ROOT_DIR}/data/torrents:/data/torrents
+      - ${ROOT_DIR}/data/movies/torrents:/data/movies/torrents
+      - ${ROOT_DIR_2}/data/tv/torrents:/data/tv/torrents
     ports:
       - 8080:8080
       - 6881:6881
@@ -109,7 +112,8 @@ services:
       - TZ=${TIMEZONE}
     volumes:
       - ./config/sabnzbd-config:/config
-      - ${ROOT_DIR}/data/usenet:/data/usenet
+      - ${ROOT_DIR}/data/movies/usenet:/data/movies/usenet
+      - ${ROOT_DIR_2}/data/tv/usenet:/data/tv/usenet
     ports:
       - "8081:8080"
     restart: unless-stopped
@@ -145,4 +149,19 @@ services:
     environment:
       - TZ=${TIMEZONE}
 
-
+  emulatorjs:
+    image: lscr.io/linuxserver/emulatorjs:latest
+    container_name: emulatorjs
+    environment:
+      - PUID=${M_UID}
+      - PGID=13000
+      - TZ=${TIMEZONE}
+      - SUBFOLDER=/
+    volumes:
+      - ./config/emulatorjs-config:/config
+      - ./data/emulatorjs-data:/data
+    ports:
+      - 3000:3000
+      - 80:80
+      - 4001:4001
+    restart: unless-stopped

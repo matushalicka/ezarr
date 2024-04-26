@@ -1,24 +1,25 @@
 # EZARR
 
 Ezarr is a project built to make it EZ to deploy a Servarr mediacenter. It features:
-- [Sonarr](https://sonarr.tv/) is an application to manage TV shows. It is capable of keeping track
+- [Sonarr](https://sonarr.tv) is an application to manage TV shows. It is capable of keeping track
   of what you'd like to watch, at what quality, in which language and more, and can find a place to
   download this if connected to Prowlarr and qBittorrent. It can also reorganize the media you
   already own in order to create a more uniformly formatted collection.
-- [Radarr](https://radarr.video/) is like Sonarr, but for movies.
-- [Bazarr](https://www.bazarr.media/) is a companion application to Sonarr and Radarr that manages and downloads subtitles based on your requirements.
-- [Prowlarr](https://prowlarr.com/) can keep track of indexers, which are services that
+- [Radarr](https://radarr.video) is like Sonarr, but for movies.
+- [Bazarr](https://www.bazarr.media) is a companion application to Sonarr and Radarr that manages and downloads subtitles based on your requirements.
+- [Prowlarr](https://prowlarr.com) can keep track of indexers, which are services that
   keep track of Torrent or UseNet links. One can search an indexer for certain content and find a
   where to download this. **Note**: when adding an indexer, please do not set the "seed ratio" to
   less than 1. Less than 1 means that you upload less than you download. Not only is this
   unfriendly towards your fellow users, but it can also get you banned from certain indexers.
-- [qBittorrent](https://www.qbittorrent.org/) can download torrents and provides a bunch more
+- [qBittorrent](https://www.qbittorrent.org) can download torrents and provides a bunch more
   features for management.
-- [SABnzbd](https://sabnzbd.org/) can download nzb's features for management.
-- [Jellyfin](https://jellyfin.org/) is a Free Software Media System that puts you in control of managing and streaming your media. It is an alternative to the proprietary Emby and Plex, to provide media from a dedicated server to end-user devices via multiple apps.
+- [SABnzbd](https://sabnzbd.org) can download nzb's features for management.
+- [Jellyfin](https://jellyfin.org) is a Free Software Media System that puts you in control of managing and streaming your media. It is an alternative to the proprietary Emby and Plex, to provide media from a dedicated server to end-user devices via multiple apps.
 - [FlareSolverr](https://github.com/FlareSolverr/FlareSolverr) is a proxy server to bypass Cloudflare and DDoS-GUARD protection.
-- [Whisper ASR Webservice](https://github.com/ahmetoner/whisper-asr-webservice/) is a general-purpose speech recognition model. It is trained on a large dataset of diverse audio and is also a multitask model that can perform multilingual speech recognition as well as speech translation and language identification.
-- [Recyclarr](https://recyclarr.dev/) is a command-line application that will automatically synchronize recommended settings from the TRaSH guides to your Sonarr/Radarr instances.
+- [Whisper ASR Webservice](https://github.com/ahmetoner/whisper-asr-webservice) is a general-purpose speech recognition model. It is trained on a large dataset of diverse audio and is also a multitask model that can perform multilingual speech recognition as well as speech translation and language identification.
+- [Recyclarr](https://recyclarr.dev) is a command-line application that will automatically synchronize recommended settings from the TRaSH guides to your Sonarr/Radarr instances.
+- [EmulatorJS](https://emulatorjs.org) is a self-hosted javascript emulator for various system.
 
 ## Using
 1. To get started, clone the repository in a directory of your choosing. **Note: this will be where
