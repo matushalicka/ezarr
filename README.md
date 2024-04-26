@@ -20,6 +20,7 @@ Ezarr is a project built to make it EZ to deploy a Servarr mediacenter. It featu
 - [Whisper ASR Webservice](https://github.com/ahmetoner/whisper-asr-webservice) is a general-purpose speech recognition model. It is trained on a large dataset of diverse audio and is also a multitask model that can perform multilingual speech recognition as well as speech translation and language identification.
 - [Recyclarr](https://recyclarr.dev) is a command-line application that will automatically synchronize recommended settings from the TRaSH guides to your Sonarr/Radarr instances.
 - [EmulatorJS](https://emulatorjs.org) is a self-hosted javascript emulator for various system.
+- [Ombi](https://ombi.io) is a self-hosted web application that automatically gives your shared Plex or Emby users the ability to request content by themselves! Ombi can be linked to multiple TV Show and Movie DVR tools to create a seamless end-to-end experience for your users. 
 
 ## Using
 1. To get started, clone the repository in a directory of your choosing. **Note: this will be where

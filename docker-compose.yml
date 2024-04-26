@@ -156,7 +156,6 @@ services:
       - PUID=${M_UID}
       - PGID=13000
       - TZ=${TIMEZONE}
-      - SUBFOLDER=/
     volumes:
       - ./config/emulatorjs-config:/config
       - ./data/emulatorjs-data:/data
@@ -164,4 +163,17 @@ services:
       - 3000:3000
       - 80:80
       - 4001:4001
+    restart: unless-stopped
+
+  ombi:
+    image: lscr.io/linuxserver/ombi:latest
+    container_name: ombi
+    environment:
+      - PUID=${M_UID}
+      - PGID=13000
+      - TZ=${TIMEZONE}
+    volumes:
+      - ./config/ombi-config:/config
+    ports:
+      - 3579:3579
     restart: unless-stopped

@@ -18,7 +18,7 @@ sudo usermod -a -G mediacenter sabnzbd
 sudo usermod -a -G mediacenter bazarr
 
 # Make directories
-sudo mkdir -pv ./config/{sonarr,radarr,prowlarr,qbittorrent,jellyfin,sabnzbd,bazarr,recyclarr,emulatorjs}-config
+sudo mkdir -pv ./config/{sonarr,radarr,prowlarr,qbittorrent,jellyfin,sabnzbd,bazarr,recyclarr,emulatorjs,ombi}-config
 sudo mkdir -pv ./data/emulatorjs-data
 sudo mkdir -pv ${ROOT_DIR}/data/movies/{torrents,usenet,media}
 sudo mkdir -pv ${ROOT_DIR_2}/data/tv/{torrents,usenet,media}
@@ -40,4 +40,5 @@ sudo chown -R sabnzbd:mediacenter config/sabnzbd-config
 sudo chown -R ${M_UID}:mediacenter ./config/recyclarr-config
 sudo chown -R ${M_UID}:mediacenter ./config/emulatorjs-config
 sudo chown -R ${M_UID}:mediacenter ./data/emulatorjs-data
+sudo chown -R ${M_UID}:mediacenter ./config/ombi-config
 
