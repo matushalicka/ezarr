@@ -17,7 +17,6 @@ Ezarr is a project built to make it EZ to deploy a Servarr mediacenter. It featu
 - [SABnzbd](https://sabnzbd.org) can download nzb's features for management.
 - [Jellyfin](https://jellyfin.org) is a Free Software Media System that puts you in control of managing and streaming your media. It is an alternative to the proprietary Emby and Plex, to provide media from a dedicated server to end-user devices via multiple apps.
 - [FlareSolverr](https://github.com/FlareSolverr/FlareSolverr) is a proxy server to bypass Cloudflare and DDoS-GUARD protection.
-- [Whisper ASR Webservice](https://github.com/ahmetoner/whisper-asr-webservice) is a general-purpose speech recognition model. It is trained on a large dataset of diverse audio and is also a multitask model that can perform multilingual speech recognition as well as speech translation and language identification.
 - [Recyclarr](https://recyclarr.dev) is a command-line application that will automatically synchronize recommended settings from the TRaSH guides to your Sonarr/Radarr instances.
 - [EmulatorJS](https://emulatorjs.org) is a self-hosted javascript emulator for various system.
 - [Ombi](https://ombi.io) is a self-hosted web application that automatically gives your shared Plex or Emby users the ability to request content by themselves! Ombi can be linked to multiple TV Show and Movie DVR tools to create a seamless end-to-end experience for your users. 
