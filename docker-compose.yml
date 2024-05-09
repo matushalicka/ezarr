@@ -130,16 +130,6 @@ services:
       - 8191:8191
     restart: unless-stopped
 
-  openai-whisper-asr-webservice:
-    image: onerahmet/openai-whisper-asr-webservice:latest
-    container_name: openai-whisper-asr-webservice
-    environment:
-      - ASR_ENGINE=faster_whisper
-      - ASR_MODEL=base
-    ports:
-      - 9000:9000
-    restart: unless-stopped
-
   recyclarr:
     image: ghcr.io/recyclarr/recyclarr:latest
     container_name: recyclarr
