@@ -115,7 +115,7 @@ services:
       - ${ROOT_DIR}/data/movies/usenet:/data/movies/usenet
       - ${ROOT_DIR_2}/data/tv/usenet:/data/tv/usenet
     ports:
-      - "8081:8080"
+      - 8081:8080
     restart: unless-stopped
 
   flaresolverr:
